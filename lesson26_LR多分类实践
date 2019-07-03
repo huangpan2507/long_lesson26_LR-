@@ -87,7 +87,8 @@ for epoch in range(epoch):
         data = data.view(-1, 28*28)
         logits = forward(data)
         test_loss += criteon(logits, target).item()
-
+        '''或者pred = logits.argmax(dim=1)
+        correct += pred.eq(target, pred).float().sum().item()'''
         pred = logits.data.max(1)[1]
         correct += pred.eq(target.data).sum()
 
